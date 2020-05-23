@@ -1,0 +1,32 @@
+# Brief taken from: https://leetcode.com/problems/two-sum/
+# Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+# You may assume that each input would have exactly one solution, and you may not use the same element twice.
+# Example:
+# Given nums = [2, 7, 11, 15], target = 9,
+# Because nums[0] + nums[1] = 2 + 7 = 9,
+# return [0, 1].
+
+# Will use the example values to run
+nums = [2, 7, 11, 15]
+target = 9
+for i in range(0, len(nums)-1):
+    for j in range(0, len(nums)-1):
+        if i == j:
+            # Accounts for the two variables being the same value, whilst also allowing for repeating values
+            continue
+        elif nums[i] + nums[j] == target:
+            targetVals = [nums[i], nums[j]]
+            # Without breaks, the code keeps going, thus increasing processing time, as well as the targetVals list will
+            # be overwritten
+            break
+    # Could potentially make the code a function to enable a cleaner exit from the loops
+    if len(targetVals) == 2:
+        break
+
+# Checks the end states, could use either the length of the targetVals array, or test for if it exists
+if len(targetVals) == 2:
+    print("The values that sum to "+str(target)+" are: "+str(targetVals[0])+","+str(targetVals[1]))
+else:
+    print("No matches found")
+
+
