@@ -52,16 +52,21 @@ class Solution(object):
         """
         temp = None
         summation = 0
-        # Dictionary for 
+        # Dictionary for values
         values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
         for index, char in enumerate(s, 0):
             # Uses enumerate so can use a for each whilst keeping track of index
             if index > 0:
+                # A the value of the numeral is deducted from the next value if it is lower than previous, I test this
+                # using a temp value to compare to, as there is no numeral for 0, I use that as a place holder to
+                # indicate when it has been reset
                 if temp < values[char] and temp != 0:
                     summation += values[char] - temp
                     temp = 0
+                    # I then  continue to ensure that the value of the current character is not assigned to temp
                     continue
                 else:
+                    # Adds the temp value if no subtraction required
                     summation += temp
             temp = values[char]
         return  summation

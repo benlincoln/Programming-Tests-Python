@@ -9,6 +9,7 @@
 # Will use the example values to run
 nums = [2, 7, 11, 15]
 target = 9
+targetVals = []
 for i in range(0, len(nums)):
     for j in range(0, len(nums)):
         if i == j:
