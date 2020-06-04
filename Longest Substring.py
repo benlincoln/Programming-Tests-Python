@@ -31,12 +31,12 @@ class Solution:
                 if len(currString) > len(longest):
                     longest = currString
                 # Resets current string
-                currString= char
+                currString = char
             else:
                 # Appends to current string if not already in the string
                 currString = currString+char
         print(longest)
-        print (len(longest))
+        print(len(longest))
         return len(longest)
 
 

@@ -7,27 +7,40 @@
 # return [0, 1].
 
 # Will use the example values to run
-nums = [2, 7, 11, 15]
+nums = list([2, 7, 11, 15])
 target = 9
-targetVals = []
-for i in range(0, len(nums)):
-    for j in range(0, len(nums)):
-        if i == j:
-            # Accounts for the two variables being the same value, whilst also allowing for repeating values
-            continue
-        elif nums[i] + nums[j] == target:
-            targetVals = [nums[i], nums[j]]
-            # Without breaks, the code keeps going, thus increasing processing time, as well as the targetVals list will
-            # be overwritten
+
+
+def slowMethod():
+    for i in range(0, len(nums)):
+        for j in range(0, len(nums)):
+            if i == j:
+                # Accounts for the two variables being the same value, whilst also allowing for repeating values
+                continue
+            elif nums[i] + nums[j] == target:
+                targetVals = [i, j]
+                # Without breaks, the code keeps going, thus increasing processing time, as well as the targetVals list will
+                # be overwritten
+                break
+        # Could potentially make the code a function to enable a cleaner exit from the loops
+        if len(targetVals) == 2:
             break
-    # Could potentially make the code a function to enable a cleaner exit from the loops
+
+    # Checks the end states, could use either the length of the targetVals array, or test for if it exists
     if len(targetVals) == 2:
-        break
+        print("The indices of the values that sum to "+str(target)+" are: "+str(targetVals[0])+","+str(targetVals[1]))
+    else:
+        print("No matches found")
 
-# Checks the end states, could use either the length of the targetVals array, or test for if it exists
-if len(targetVals) == 2:
-    print("The values that sum to "+str(target)+" are: "+str(targetVals[0])+","+str(targetVals[1]))
-else:
-    print("No matches found")
+def hashmapMethod():
+    # Creates a dictionary with values and their indexes to see if a given value's partner value is in said index.
+    visited = {}
+    for i, num in enumerate(nums):
+        pairVal = target - num
+        if pairVal not in visited:
+            visited[num] = i
+        else:
+            return [visited[pairVal], i]
 
 
+print(hashmapMethod())

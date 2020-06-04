@@ -9,7 +9,7 @@ Note: You may not slant the container and n is at least 2.
 
 
 class Solution(object):
-    def maxArea(self, height):
+    def maxAreaONSquared(self, height):
         """
         :type height: List[int]
         :rtype: int
@@ -26,6 +26,19 @@ class Solution(object):
                     currentMax = max(x*y, currentMax)
         return currentMax
 
+# Better method using a head and tail, thus allowing for O(n) as opposed to O(n^2)
+    def maxAreaON(self, height):
+        tail = len(height)-1
+        maxVal = 0
+        for head in range(0,len(height)):
+            if head < tail:
+                x = tail - head
+                y = min(height[head], height[tail])
+                curr = x*y
+            else:
+                return maxVal
+            maxVal = max(maxVal, curr)
 
 test = Solution()
-print(str(test.maxArea([1,8,6,2,5,4,8,3,7])))
+print(str(test.maxAreaONSquared([1,8,6,2,5,4,8,3,7])))
+print(str(test.maxAreaON([1,8,6,2,5,4,8,3,7])))

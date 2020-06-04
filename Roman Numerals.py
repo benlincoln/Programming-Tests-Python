@@ -69,7 +69,7 @@ class Solution(object):
                     # Adds the temp value if no subtraction required
                     summation += temp
             temp = values[char]
-        return  summation
+        return summation
 
 test = Solution()
 print(test.romanToInt("MCMXCIV"))
