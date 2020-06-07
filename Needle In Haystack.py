@@ -28,11 +28,16 @@ class Solution(object):
         :rtype: int
         """
         if not needle or not haystack:
+            # Checks for either parameter to be empty
             return 0
         for i in range(0,len(haystack)-len(needle)):
+            # Checks through the array in intervals of up to the length of the needle to see if it is present
             if haystack[i:i+len(needle)] == needle:
+                # If match, return i
                 return i
         return -1
+
+
 test = Solution()
 print(test.strStr("hello", "ll"))
 
