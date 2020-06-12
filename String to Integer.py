@@ -64,7 +64,8 @@ class Solution(object):
                     return int(returnInt)
             else:
                 returnInt += char
-            if int(returnInt) > pow(2,31):
+            # Checks for max integer value, uses float in order to not encounter overflow error when checking
+            if float(returnInt) > pow(2,31):
                 returnInt = pow(2,31)
         return int(returnInt)
 
