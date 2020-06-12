@@ -51,9 +51,6 @@ class Solution(object):
         :rtype: int
         """
         returnInt = "0"
-        # Checks if there is a numerical value in the string to begin with
-        if ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'] not in str:
-            return 0
         for char in str:
             if not char.isnumeric():
                 # Checks for whether or not the character is numeric and then if it is in non numeric
@@ -67,4 +64,9 @@ class Solution(object):
                     return int(returnInt)
             else:
                 returnInt += char
+            if int(returnInt) > pow(2,31):
+                returnInt = pow(2,31)
         return int(returnInt)
+
+test = Solution()
+print(test.myAtoi("   43"))
